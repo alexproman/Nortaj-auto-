@@ -1,0 +1,1071 @@
+:root{
+    --header-bg :linear-gradient(#333, #ccc, #333);
+    --header2-bg:linear-gradient(#0d5385,#02559e,#02559e,#02559e,#0d5385);
+    --active-sec :linear-gradient(45deg,#000, #666, #000);
+    --active-sec2 :linear-gradient(45deg,#081b29, #53b7fa, #081b29);
+    --active-sec3 :linear-gradient(#02101a, #53b7fa, #02101a);
+    --white : #fff;
+    --kreem :#e5eaee;
+    --btn-bg:#094d81;
+    --brimary-color:#183f5c;
+    --brimary-color2: #081b29;
+
+    --brimary-container:#6d84b879;
+    --brimary-dark:#183f5c8a;
+    --brimary-light:#3c6483;
+    --brimary-soft :#637e91;
+    --secoundry-color: #183f5c15;
+    --aside-bg2:linear-gradient(30deg ,#333, #a19f99,#a19f99,#a19f99,#333);
+    --aside-bg3: linear-gradient(30deg,#102f46,#09f,#102f46);
+    --aside-bg: #a19f99;
+    --light-black: #333;
+    --light-gray: #f1ecec;
+    --dark-gray: #ffffff33;
+    --black :#000;
+    --input-gray: #ccc;
+    --table-bg:#bdbcbc86;
+    --sold-container:#4c6272;
+    --chsis-color:#b40e0e;
+    --chasis-soft:#b33030;
+    --tilte:#180044;
+    --warning:#9acd32;
+    --sold-btn:#128541;
+    --trans-btn:#978311;
+    --search-btn:#452bac;
+    /* ********** */
+    --txt-shadow-light: 0 1px var(--white), 0 -1px var(--white), 1px 0 var(--white), -1px 0 var(--white);
+    --txt-shadow-dark: 0 1px var(--black), 0 -1px var(--black), 1px 0 var(--black), -1px 0 var(--black);
+    --txt-shadow-soft: 0 1px var(--brimary-color), 0 -1px var(--brimary-color), 1px 0 var(--brimary-color), -1px 0 var(--brimary-color);
+    --txt-shadow-red: 0 1px #860606, 0 -1px #860606, 1px 0 #860606, -1px 0 #860606;
+
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: calc(100vh - 40px);
+    overflow: hidden;
+}
+
+header {
+    direction: ltr;
+    width: 100%;
+    height: 80px;
+    padding: 30px;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: var(--active-sec3);
+    color: var(--brimary-color2);
+    text-transform: capitalize;
+    text-shadow: 1px 0 var(--white),
+        -1px 0 var(--white),
+        0 1px var(--white),
+        0 -1px var(--white);
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+    width: 100%;
+    height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+aside {
+    position: relative;
+    background:var(--aside-bg3);
+    width: 20%;
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    box-shadow: inset -7px 7px 20px var(--light-black);
+    outline: none;
+    border: none;
+    transform: translateX(0%);
+}
+.main-login{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    backdrop-filter: blur(20px);
+    width: auto;
+    height: auto;
+    padding: 10px 20px;
+    color: var(--brimary-color2);
+    border: none;
+    border-radius: 10px;
+    font-size: 90px;
+    box-shadow: 3px  3px 3px rgba(255, 255, 255, 0.1);
+    text-shadow: var(--txt-shadow-light);
+    user-select: none;
+    cursor: pointer;
+    display: none;
+}
+
+
+
+aside ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+aside .search-popup{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease-in-out;
+    border-right:10px solid rgba(0, 0, 0, 0.3) ;
+     flex-direction: column;
+    z-index: 2;
+    background: var(--aside-bg3);
+    transform: translateX(-100%);
+
+
+}
+
+aside .search-popup.active{
+    transform: translateX(0%);
+}
+.search-icon-close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.search-title{
+    text-shadow: var(--txt-shadow-light);
+    position: absolute;
+    top: 5%;
+    padding: 10px;
+    border-radius: 6px 6px 0 0;
+    background: var(--brimary-soft);
+    border-top: 2px solid var(--kreem);
+}
+.search-title:after{
+    content: '';
+    background: var(--kreem);
+    position: absolute;
+    left: 0;
+    bottom: -10%;
+    width: 100%;
+    height: 3px;
+    border-radius: 6px;
+
+}
+ /* serach chassis and customer name group************************************** */
+
+.search-group{
+    position: absolute;
+    top: 15%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+/* ************************|||||||||******************** style of search buttons********************* */
+.search-group h4{
+    color: var(--kreem);
+    text-shadow: var(--txt-shadow-dark);
+}
+.search-btns-group{
+    width:100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.search-btns-group.show-all{
+    position: absolute;
+    height: 50px;
+    top: 84%;
+}
+.search-group button.srch-btn,button.show-all-btn{
+    width: 46%;
+    height: 100%;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    background: var(--aside-bg3);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 5px;
+    box-shadow: 0  0 4px var(--black);
+    transition: 0.4s ease;
+}
+button.show-all-btn{
+    width: 95%;
+    height: 45px;
+
+
+}
+.search-group button.srch-btn:focus,
+.show-all-btn:focus{
+    background: var(--active-sec2);
+    color: var(--kreem);
+}
+.srch-inp-group{
+    padding: 4px;
+    width: 95%;
+    height: 30%;
+    background: var(--header2-bg);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 6px;
+
+}
+.srch-inp-group span,.srch-inp-group label{
+    width: 13%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--kreem);
+}
+.srch-inp-group img{
+    width: 70%;
+}
+.srch-inp-group input{
+    width: 87%;
+    height: 100%;
+    outline: none;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--input-gray);
+}
+.srch-inp-group input:focus{
+    background: var(--aside-bg);
+    color: var(--black);
+
+}
+ /* serach entry date group************************************** */
+
+.search-group.entry-search,
+.search-group.Exit-search{
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px;
+}
+.entry-search{
+    top: 37%;
+}
+.Exit-search{
+    top: 63%;
+}
+.date-group{
+    width: 100%;
+    height: 45%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 5px;
+}
+.date-group div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    height: 40%;
+    
+}
+.date-group div input{
+    width: 80%;
+    height: 28px;
+    cursor: pointer;
+}
+.search-group .srch-btn.date-search{
+    width: 45%;
+    height: 40px;
+    font-size: 0.8rem;
+}
+.showAll-save-btns{
+    width: 80%;
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    top: 90%;
+}
+.showAll-save-btns button{
+    height: 2.5rem;
+}
+
+/* ****************************************************** */
+.header h1 {
+    padding: 10px;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.header h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+aside li {
+    position: relative;
+    width: 95%;
+    height: 60px;
+    text-align: center;
+    list-style: none;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border-radius:0 20px 0 20px;
+    box-shadow: inset 4px -4px 7px var(--brimary-color2);
+    transition: 0.5s ease;
+    z-index: 1;
+    overflow: hidden;
+}
+
+aside li span {
+    width: 25px;
+    height: 100%;
+    border-radius: 0 0 0 10px;
+    background: var(--active-sec3);
+    display: none;
+}
+
+aside li span.active {
+    display: block;
+}
+
+aside li::before {
+    position: absolute;
+    top: -20%;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 140%;
+    background: var(--active-sec3);
+    z-index: -1;
+    transition: 0.5s ease;
+
+}
+
+aside li a {
+    width: 100%;
+    text-decoration: none;
+    transition: 0.5s ease;
+    color: var(--black);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+aside li:hover a {
+    color: var(--kreem);
+    text-shadow: 1px 0 var(--black),
+        -1px 0 var(--black),
+        0 1px var(--black),
+        0 -1px var(--black);
+}
+
+aside li:hover::before {
+    top: -40%;
+}
+
+main {
+    position: relative;
+    width: 90%;
+    height: 100%;
+    background-image: url("../assets/img/bmw.png");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+.alert-container{
+    position: absolute;
+    top: 10px;
+    width: 30%;
+    height: 50px;
+    display: none;
+}
+.alert-msg{
+    width: 100%;
+    height: 100%;
+    background: var(--brimary-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: var(--kreem);
+    border-radius: 6px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+}
+.alertComplet-msg{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-170%);
+    width: 35%;
+    height: 25%;
+    background: var(--brimary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    color: var(--kreem);
+    font-size: 22px;
+    font-weight: 700;
+    border-radius: 6px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+    text-shadow: var(--txt-shadow-dark);
+    z-index: 99;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+.alertComplet-msg.active{
+    opacity: 1;
+    transform: translate(-50%,-50%);
+
+}
+.alertComplet-msg button{
+    background: var(--chasis-soft);
+}
+
+/*---------------------------------*/
+
+
+
+
+.date-search .btn {
+    width: 100%;
+    height: 45px;
+    border: none;
+    background: var(--brimary-color);
+    outline: none;
+    color: var(--brimary-soft);
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+
+.btn:hover {
+    background: var(--brimary-soft);
+    color: var(--kreem);
+}
+
+.exit-btn {
+    width: 90px;
+    height: 35px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: capitalize;
+    background: var(--brimary-dark);
+    color: var(--kreem);
+    transition: 0.4s ease-in-out;
+    box-shadow: 1px 2px 2px var(--black);
+}
+
+
+
+/* suer select None *******************/
+
+
+
+.new-car h2,
+.cars-at-showroom h2,
+label,
+li {
+    user-select: none;
+}
+/* ***********************************/
+
+
+
+
+
+
+/* ************New Car section************ */
+.new-car,
+.cars-at-showroom,
+.sold-cars,
+.transfer-cars,
+.search-section {
+    position: absolute;
+    width: 97%;
+    height: 97%;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--brimary-light);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transform: translateY(-150%);
+    transition: 0.7s ease;
+}
+.section.active{
+    transform: translateY(0%);
+}
+
+.new-car h2,
+.cars-at-showroom h2,
+.sold-cars h2,
+.transfer-cars h2,
+.search-section h2 {
+    width: 300px;
+    height: 50px;
+    margin-top: 10px;
+    color: var(--kreem);
+    background-color: var(--brimary-dark);
+    border: 1px solid var(--brimary-light);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 0 var(--black),-1px 0 var(--black),0 1px var(--black),0 -1px var(--black);
+    
+}
+
+.showroom-head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+h2.count,button.search-head{
+    position: absolute;
+    right: 40px;
+    width: 100px;
+    height: 40px;
+    font-size: small;
+}
+button.search-head{
+    left:40px ;
+}
+
+
+.All_car_data {
+    width: 97%;
+    height: 85%;
+    margin-top: 10px;
+    color: var(--kreem);
+    background-color: var(--brimary-dark);
+    border: 1px solid var(--brimary-light);
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+/* car data and entry data */
+.new-car input:focus,
+textarea:focus,
+select:focus {
+    background: var(--brimary-soft);
+    color: var(--kreem);
+}
+.option-head{
+    color: var(--white);
+    background: var(--light-black);
+}
+
+.car_and_entry_data,
+.Notes_data,
+.submit_btn {
+    padding: 10px;
+    width: 98%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid var(--light-black);
+    border-radius: 10px;
+    background-color: var(--brimary-light);
+}
+
+.car_and_entry_data {
+    height: 100%;
+    width: 98%;
+    background-color: var(--brimary-container);
+    margin-top: 10px;
+
+}
+
+
+
+/* notes data */
+.Notes_data {
+    height: 27%;
+}
+
+.Car_accessories,
+.Notes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 49%;
+    height: 100%;
+
+}
+
+textarea {
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    outline: none;
+    border: 1px solid var(--brimary-color);
+    border-radius: 4px;
+    background-color: var(--input-gray);
+    font-size: 18px;
+    font-weight: 700;
+    resize: none;
+    direction: rtl;
+    text-align: justify;
+}
+
+/* submit arae */
+.submit_btn {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.save_reset_btn {
+    width: 120px;
+    margin: 0 30px;
+}
+
+button.sold-btn{
+    background: var(--sold-btn);
+}
+button.trans-btn{
+    background: var(--trans-btn);
+}
+
+button {
+    cursor: pointer;
+    text-transform: capitalize;
+
+}
+
+/* data parent ----------------------------------------------------------Entry data----------------------------------*/
+.car_data,
+.Entry_data,
+.Exit-data.active{
+    width: 32%;
+    margin: 0 25px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+
+.data-field {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.new-car input,
+select {
+    width: 170px;
+    height: 30px;
+    padding: 0 10px;
+    outline: none;
+    border: 1px solid var(--light-black);
+    border-radius: 4px;
+    background: var(--input-gray);
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+}
+.new-car input#Chassis_No{
+    text-transform: uppercase;
+    color: var(--chsis-color);
+}
+
+ .new-car label {
+    font-weight: 700;
+    color: var(--kreem);
+    text-shadow: var(--txt-shadow-soft);
+    letter-spacing: 1px;
+}
+
+/* table style-------------------------------- */
+.scrollable-table {
+    height: 100%;
+    margin-bottom: 10px;
+    overflow-y: auto;
+
+}
+
+table {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 50px;
+    margin: 10px 0;
+}
+table.Carsdownload{
+    display: none;
+}
+
+table tr.head-tr th,td {
+    text-transform: uppercase;
+    color: var(--light-black);
+    font-size: 17px;
+    text-shadow: 0 1px var(--white), 0 -1px var(--white), 1px 0 var(--white), -1px 0 var(--white);
+    background-color: var(--table-bg);
+    border: 2px solid var(--brimary-color);
+
+
+}
+.all-table-th{
+    color: var(--white);
+}
+.all-chassis{
+    color: var(--black);
+    text-transform: uppercase;
+    font-size: 18px;font-weight: 900;
+    letter-spacing: 1px;
+    text-shadow: var(--txt-shadow-light);
+}
+
+table th,td {
+    text-transform: capitalize;
+    font-family: sans-serif;
+    width: fit-content;
+    color: var(--light-black);
+    padding: 10px 0;
+    border: 2px solid var(--brimary-color);
+    background-color: var(--input-gray);
+
+}
+ input:focus {
+    background: var(--brimary-soft);
+    color: var(--kreem);
+}
+.num{
+    width: 50px;
+}
+.action{
+    width: 10%;
+}
+.name-th{
+    width: 270px;
+}
+
+
+
+.NewCar-data div{
+    width: 100%;
+    height: 290px;
+    text-align: left;
+}
+.NewCar-data div h4{
+    margin: 3px;
+    padding: 3px;
+    background: var(--brimary-container);
+    border: 1px solid var(--brimary-color);
+    border-radius: 4px;
+}
+/* details card ____________________________________ */
+.allentryData{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    text-align: justify;
+}
+.allentryData .warning,.warningSold{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 25px;
+    transform: translate(-250% , -50%);
+    transition: 0.4s ease;
+    width: 49%;
+    height: 100%;
+    background:var(--brimary-color);
+    color: var(--kreem);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    
+}
+
+
+.allentryData .warning div{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+    background: transparent;
+    border: none;
+
+}
+.allentryData .warning h3{
+    color: var(--warning);
+    text-shadow: var(--txt-shadow-red);
+}
+button.confirm-delet{
+    background: var(--chsis-color);
+}
+button.confirm-delet:hover{
+    background:var(--chasis-soft);
+}
+.btn.confirm-sold{
+    background: var(--sold-btn);
+}
+.btn.confirm-trans{
+    background: var(--trans-btn);
+}
+.allentryData div{
+    padding: 7px;
+    width: 24%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 1px solid #333;
+    border-radius: 7px;
+    background:var(--brimary-container);
+    text-transform: capitalize;
+    
+}
+.allentryData .ditls-title{
+    justify-content: flex-start;
+}
+.allentryData .sold-trans-notes{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.allentryData .sold-trans-notes div{
+    width: 99%;
+    height: 49%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;gap: 3px;
+
+}
+.ditls-title h4 {
+    text-align: center;
+    color: var(--title);
+}
+.ditls-title p,.sold-trans-notes div small{
+    color: var(--black);
+    text-align: justify;
+    direction: rtl;
+    width:190px;
+    overflow-wrap: break-word;
+    margin: 0 3px;
+}
+
+.required{
+    text-align: center;
+    font-size: 18px;
+    color: #00b7ff;
+}
+h5{
+    color: var(--black);
+    font-weight: bold;
+}
+.chasis-color{
+    font-size: 16px;
+    color: var(--chsis-color);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+}
+
+
+
+.car-detailes{
+    text-align:left;
+    gap: 5px;
+    padding: 10px ;
+
+}
+
+.car-accsseories,.car-notes{
+    padding: 10px;
+    text-transform: uppercase;
+    direction: rtl;
+}
+.car-accsseories p,.car-notes p{
+    width: 95%;
+    height: 95%;
+    padding: 6px;
+    text-align: justify;
+}
+/* action buttons______________________________________________ */
+.action-th{
+    width: 12%;
+}
+
+.action-btns-container{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btn-style{
+    width: 90px;
+    height: 30px;
+    padding: 3px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    background: var(--btn-bg);
+    color: var(--kreem);
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 1);
+}
+/* Exit Data ____________________________________________________ */
+
+.exit-form{
+    padding: 0 20px;
+    border-radius: 20px;
+    transform: translateX(150%);
+    transition: 0.7s ease;
+    background: var(--brimary-dark);
+}
+
+
+.secnd-inp{
+    transform: translateX(100%);
+}
+#all-cars-count-p{
+    position: absolute;
+    bottom: 6%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    box-shadow: inset 1px 1px 1px   var(--brimary-color);
+    border: none;
+    background-color: var(--dark-gray);
+    width: 95%;
+    height: 30px;
+    padding-top: 6px;
+    color: var(--white);
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius:  0 0 6px 6px;
+    display: none;
+}
+#all-cars-count-p.active{
+    display: block;
+}
+footer {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--active-sec3);
+    color: var(--black);
+    text-transform: capitalize;
+    font-weight: 700;
+    text-shadow: var(--txt-shadow-light);
+}
+footer p{
+    margin-right: 30px;
+}
+button.log-out-btn{
+    width: 292px;
+    padding: 0 25px;
+    color: #061e30;
+    height: 40px;
+    outline: none;
+    border: none;
+    background: var(--active-sec3);
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 20px var(--brimary-color2);
+}
+.logout-span{
+    color: #f5f2f2;
+}
+.new-index{
+    background: var(--brimary-light);
+}
+.sold-index{
+    background: var(--sold-btn);
+}
+.trans-index{
+    background: var(--trans-btn);
+}

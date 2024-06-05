@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Showroom-aplication">
+    <title>NORTAJ Auto</title>
+    <link rel="shortcut icon" href="../assets/img/4140436_bmw_logo_icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
+
+</head>
+
+<body>
+    <header class="header">
+    <div class="logo-container">
+        <img src="../assets/img/4140436_bmw_logo_icon.ico" alt="" style="width: 60px;">
+          <h1>NORTAJ AUTO</h1>
+    </div>
+        <h2 class="logo">BMW-CARS</h2>
+    </header>
+    <!-- <div class="crud"></div> -->
+    <div class="container">
+        <aside dir="ltr">
+
+
+            <ul>
+                <li class="list list-new-car">
+                    <span class="spanList"></span><a href="#">Add a new Car</a>
+                </li>
+                <li class="list list-cars-at-showroom" id="newCarsList" onclick="changDwnldMood(this.id)">
+                    <span class="spanList"></span><a href="#">Cars at Showroom</a>
+                </li>
+                <li class="list list-sold-cars" id="soldCarsList" onclick="changDwnldMood(this.id)">
+                    <span class="spanList"></span><a href="#">Cars sold to customers</a>
+                </li>
+                <li class="list list-transfer-cars" id="transCarsList" onclick="changDwnldMood(this.id)">
+                    <span class="spanList"></span><a href="#">Transferred To branches</a>
+                </li>
+                <li class="list list-search-data" id="allCarsList" onclick="changDwnldMood(this.id)">
+                    <span class="spanList"></span><a href="#">Search All</a>
+                </li>
+            </ul>
+
+            <div class="search-popup">
+                <span class="search-icon-close"><img src="../assets/icons/close/1x/outline_close_white_24dp.png"
+                        alt="clos-icon"></span>
+                <h2 class="search-title">Showroom Cars</h2>
+                <div class="search-group">
+                    <h4>Search by <span>Chassis</span> OR <span id="socondry-title">Name</span></h4>
+                    <div class="search-btns-group">
+                        <button type="button" onclick="getSearchInpMood(this.id)" id="chassis-num-btn"
+                            class="srch-btn">Chassis
+                            No.</button>
+                        <button type="button" onclick="getSearchInpMood(this.id)" id="name-model-branch-btn"
+                            class="srch-btn">Customer</button>
+                    </div>
+                    <div class="srch-inp-group">
+                        <span class="search-icon"><img src="../assets/icons/search/search_icon.png"
+                                alt="search-icon"></span>
+                        <input onkeyup="searchByInpValue(value)" type="text" id="search-inp" placeholder="search">
+                    </div>
+                </div>
+
+
+                <div class="search-group entry-search">
+                    <h4>Search by Entery Date</h4>
+
+                    <div class="srch-inp-group date-group">
+                        <div>
+                            <label for="Entry-start-date">From</label>
+                            <input type="date" name="Entry-start-date" id="Entry-start-date">
+                        </div>
+                        <div>
+                            <label for="Entry-End-date">To</label>
+                            <input type="date" name="Entry-End-date" id="Entry-End-date">
+                        </div>
+                    </div>
+                    <div class="search-btns-group">
+                        <button type="button" onclick="searchBetweenEntryDates()"
+                            class="srch-btn date-search">Search</button>
+                    </div>
+
+                </div>
+                <div class="search-group Exit-search">
+                    <h4>Search by Exit Date</h4>
+                    <div class="srch-inp-group date-group">
+                        <div>
+                            <label for="Exit-start-date">From</label>
+                            <input type="date" name="Exit-start-date" id="Exit-start-date">
+                        </div>
+                        <div>
+                            <label for="Exit-End-date">To</label>
+                            <input type="date" name="Exit-End-date" id="Exit-End-date">
+                        </div>
+
+                    </div>
+                    <div class="search-btns-group">
+                        <button type="button" onclick="searchBetweenExitDates()"
+                            class="srch-btn date-search">Search</button>
+                    </div>
+
+
+                </div>
+                <div class="showAll-save-btns">
+                    <button type="button" id="Show-all" onclick="showAll()"
+                        class="srch-btn date-search show-all-btn">Show All</button>
+                    <button type="button" id="download-file" class="srch-btn date-search show-all-btn">Save
+                        File</button>
+                </div>
+
+            </div>
+
+
+        </aside>
+        <main>
+            <h1 class="main-login">Login</h1>
+
+            <div class="alert-complet">
+                <div class="alertComplet-msg">
+                    <p>Please complete the required Fields !! </p>
+                    <button type="button" class="btn-style alertComplet-btn">O.K</button>
+                </div>
+            </div>
+
+
+            <!-- add new car -->
+            <div class="new-car section">
+                <h2 class="main-title">Add a New Car</h2>
+                <div class="All_car_data">
+                    <div class="car_and_entry_data">
+                        <div class="car_data">
+                            <div class="carTypeData data-field">
+                                <label for="carType">Car Type</label>
+                                <select name="carType" id="carType">
+                                    <option value="Select" class="option-head">Select</option>
+                                    <option value="BMW">BMW</option>
+                                    <option value="MINI">MINI</option>
+                                    <option value="otherType">Other</option>
+                                </select>
+                            </div>
+                            <div class="carClassData data-field">
+                                <label for="carClass">Vehicle Class</label>
+                                <select name="carClass" id="carClass">
+                                    <option value="Select" class="option-head">Select</option>
+                                    <option value="1 Series">1 Series</option>
+                                    <option value="2 Series">2 Series</option>
+                                    <option value="3 Series">3 Series</option>
+                                    <option value="4 Series">4 Series</option>
+                                    <option value="5 Series">5 Series</option>
+                                    <option value="6 Series">6 Series</option>
+                                    <option value="7 Series">7 Series</option>
+                                    <option value="8 Series">8 Series</option>
+                                    <option value="Z Series">Z Series</option>
+                                    <option value="M Series">M Series</option>
+                                    <option value="X Series">X Series</option>
+                                    <option value="I Series">I Series</option>
+                                    <option value="Mini Cooper">Mini Cooper</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="carModelData data-field">
+                                <label for="carModel">Car Model&nbsp;<span class="required">*</span></label>
+                                <input type="text" name="carModel" id="carModel" required>
+                            </div>
+                            <div class="carColorData data-field">
+                                <label for="carColor">Car Color&nbsp;<span class="required">*</span></label>
+                                <input type="text" name="carColor" id="carColor" required>
+                            </div>
+                            <div class="Chassis_No data-field">
+                                <label for="Chassis_No">Chassis No.&nbsp;<span class="required">*</span></label>
+                                <input type="text" name="Chassis_No" id="Chassis_No" required>
+                            </div>
+                            <div class="Kilometer data-field">
+                                <label for="Kilometer">Kilometer&nbsp;<span class="required">*</span></label>
+                                <input type="number" name="Kilometer" id="Kilometer" min="0" required>
+                            </div>
+                        </div>
+                        <div class="Entry_data secnd-inp">
+                            <div class="entry_date data-field">
+                                <label for="Entry-date">Entry Date&nbsp;<span class="required">*</span></label>
+                                <input type="date" name="Entry-date" id="Entry-date" required>
+                            </div>
+                            <div class="Entry_time data-field">
+                                <label for="Entry-time">Entry Time</label>
+                                <input type="time" name="Entry-time" id="Entry-time">
+                            </div>
+                            <div class="Winch_number data-field">
+                                <label for="winch_number">Winch Number</label>
+                                <input type="text" name="winch_number" id="winch_number">
+                            </div>
+                            <div class="winch_driver data-field">
+                                <label for="winch_driver">Winch Driver</label>
+                                <input type="text" name="winch_driver" id="winch_driver">
+                            </div>
+                            <div class="came-from data-field">
+                                <label for="came-from">Came From</label>
+                                <input type="text" name="came-from" id="came-from">
+                            </div>
+                        </div>
+                        <!-- Exit data form -->
+                        <div class="Entry_data exit-form">
+                            <div class="exit_date data-field">
+                                <label for="exit-date">Exit Date&nbsp;<span class="required">*</span></label>
+                                <input type="date" name="exit-date" id="exit-date">
+                            </div>
+                            <div class="exit_time data-field">
+                                <label for="Exit-time">Exit Time&nbsp;</label>
+                                <input type="time" name="Exit-time" id="Exit-time">
+                            </div>
+                            <div class="premit-num data-field">
+                                <label for="premit_number">Premit No.&nbsp;<span class="required">*</span></label>
+                                <input type="text" name="premit_number" id="premit_number">
+                            </div>
+                            <div class="car-case data-field">
+                                <label for="car-case">Car Case&nbsp;<span class="required">*</span></label>
+                                <select name="car-case" id="car-case">
+                                    <option value="" class="option-head">Select</option>
+                                    <option value="sold">Sold</option>
+                                    <option value="Transferred">Transfer</option>
+                                </select>
+                            </div>
+                            <div class="customer-name data-field">
+                                <label for="custm_name">Customer&nbsp;<span class="required">*</span></label>
+                                <input type="text" name="customer-name" id="custm_name">
+                            </div>
+                            <div class="Branch data-field">
+                                <label for="branch">trans. Branch&nbsp;<span class="required">*</span></label>
+                                <input type="text" name="branch" id="branch">
+                            </div>
+                            <div class="sales-name data-field">
+                                <label for="sales-name">Sales Name&nbsp;</label>
+                                <input type="text" name="sales-name" id="sales-name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="Notes_data">
+                        <div class="Car_accessories">
+                            <label for="accessories">Car accessories</label>
+                            <textarea name="accessories" id="accessories" rows="5" cols="50"></textarea>
+                        </div>
+                        <div class="Notes">
+                            <label for="Notes">Notes</label>
+                            <textarea name="Notes" id="Notes" rows="5" cols="50"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="submit_btn">
+                        <button class="btn save_reset_btn btn-style" id="save-btn" type="submit">
+                            Save
+                        </button>
+
+                        <button class="btn save_reset_btn btn-style " id="reset-btn" type="reset">
+                            Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- cars at show room -->
+            <div class="cars-at-showroom section">
+                <div class="showroom-head">
+                    <button id="searchShow" class="btn btn-style search-head search-showroom-btn">Search ...</button>
+                    <h2 class="main-title">Cars at Showroom</h2>
+                    <h2 class="count">Count : <span id="count">&nbsp;0</span></h2>
+                </div>
+
+                <div class="All_car_data">
+                    <div class="car_and_entry_data scrollable-table">
+                        <table id="newCarsTable">
+                            <thead>
+                                <tr class="head-tr">
+                                    <th class="num">No.</th>
+                                    <th><span></span>Detailes</th>
+                                    <th class="action-th"><span></span>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="new-car-tbody">
+
+                            </tbody>
+                        </table>
+                        <table class="Carsdownload" id="newCarsdownload">
+                            <caption>New Cars At Showroom</caption>
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Type</th>
+                                    <th>class</th>
+                                    <th>Model</th>
+                                    <th>Color</th>
+                                    <th>Chassis</th>
+                                    <th>Kilometer</th>
+                                    <th>Entry Date</th>
+                                    <th>Entry Time</th>
+                                    <th>Winch No.</th>
+                                    <th>Winch Driver</th>
+                                    <th>Came From</th>
+                                    <th>accessories</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="downNewTbody">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- sold cars  -->
+            <div class="sold-cars section">
+                <div class="showroom-head">
+                    <button id="searchSold" class="btn btn-style search-head search-showroom-btn">Search ...</button>
+                    <h2 class="main-title">Sold To Customers</h2>
+                    <h2 class="count">Count : <span id="soldCount">&nbsp;0</span></h2>
+                </div>
+                <div class="All_car_data">
+                    <div class="car_and_entry_data scrollable-table sold-cars-Schedule">
+                        <table id="soldCarsTable">
+                            <thead>
+                                <tr class="head-tr">
+                                    <th class="num">No.</th>
+                                    <th><span></span>Detailes</th>
+                                    <th class="action-th"><span></span>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sold-cars-tbody">
+
+                            </tbody>
+                        </table>
+                        <table class="Carsdownload" id="soldCarsDownload">
+                            <caption>Sold Cars</caption>
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Type</th>
+                                    <th>class</th>
+                                    <th>Model</th>
+                                    <th>Color</th>
+                                    <th>Chassis</th>
+                                    <th>Kilometer</th>
+                                    <th>Entry Date</th>
+                                    <th>Entry Time</th>
+                                    <th>Winch No.</th>
+                                    <th>Winch Driver</th>
+                                    <th>Came From</th>
+                                    <th>accessories</th>
+                                    <th>Notes</th>
+                                    <th>Exit Date</th>
+                                    <th>Premit No.</th>
+                                    <th>Customer</th>
+                                    <th>Sales</th>
+                                </tr>
+                            </thead>
+                            <tbody id="downSoldTbody">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- transferred cars  -->
+            <div class="transfer-cars section">
+                <div class="showroom-head">
+                    <button id="searchTrans" class="btn btn-style search-head search-showroom-btn">Search ...</button>
+                    <h2 class="main-title">Transfer To Branches</h2>
+                    <h2 class="count">Count : <span id="transCount">&nbsp;0</span></h2>
+                </div>
+
+                <div class="All_car_data">
+                    <div class="car_and_entry_data scrollable-table sold-cars-Schedule transfer-cars-Schedule">
+                        <table id="transCarsTable">
+                            <thead>
+                                <tr class="head-tr">
+                                    <th class="num">No.</th>
+                                    <th><span></span>Detailes</th>
+                                    <th class="action-th"><span></span>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trans-tbody">
+
+                            </tbody>
+                        </table>
+                        <table class="Carsdownload" id="transCarsDownload">
+                            <caption>Transferred Cars</caption>
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Type</th>
+                                    <th>class</th>
+                                    <th>Model</th>
+                                    <th>Color</th>
+                                    <th>Chassis</th>
+                                    <th>Kilometer</th>
+                                    <th>Entry Date</th>
+                                    <th>Entry Time</th>
+                                    <th>Winch No.</th>
+                                    <th>Winch Driver</th>
+                                    <th>Came From</th>
+                                    <th>accessories</th>
+                                    <th>Notes</th>
+                                    <th>Exit Date</th>
+                                    <th>Premit No.</th>
+                                    <th>Branch</th>
+                                    <th>Sales</th>
+                                </tr>
+                            </thead>
+                            <tbody id="downTransTbody">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- search  -->
+            <div class="search-section section">
+                <div class="showroom-head">
+                    <button id="searchAll" class="btn btn-style search-head search-showroom-btn">Search ...</button>
+                    <h2 class="main-title">All Cars</h2>
+
+                    <h2 class="count">Count : <span id="All-Cars-count">&nbsp;0</span></h2>
+                </div>
+
+                <div class="All_car_data">
+                    <div class="car_and_entry_data scrollable-table">
+                        <table id="all-table">
+                            <thead>
+                                <tr class="head-tr">
+                                    <th class="num">No.</th>
+                                    <th>Model</th>
+                                    <th>Chassis</th>
+                                    <th>Color</th>
+                                    <th>Entry Date</th>
+                                    <th>Came From</th>
+                                    <th>Exit Date</th>
+                                    <th>Primet No.</th>
+                                    <th>Case</th>
+                                    <th>Customer</th>
+                                    <th>Branch</th>
+                                </tr>
+                            </thead>
+                            <tbody id="search-tbody">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <h2 class="count" id="all-cars-count-p">&nbsp;</h2>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer>
+        <button type="button" id="log-out" onclick="" class="log-out-btn date-search ">
+            <img src="../assets/icons/log-out/log-out-regular-24.png" alt="">log-out<span
+                class="logout-span"></span></button>
+        <p>Designed By H@MiiD 2024</p>
+    </footer>
+    <script src="../js/app.js"></script>
+    <script src="../js/exceljs.min.js"></script>
+    <script src="../js/FileSaver.min.js"></script>
+    <script src="../js/xlsx.full.min.js"></script>
+
+
+</body>
+
+</html>

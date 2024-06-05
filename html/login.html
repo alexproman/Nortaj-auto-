@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORTAJ Auto</title>
+    <link rel="shortcut icon" href="../assets/img/4140436_bmw_logo_icon.ico" type="image/x-icon" >
+    <link rel="stylesheet" href="../css/style.css" >
+    <link rel="stylesheet" href="../css/login.css" >
+</head>
+<body>
+    <header class="header login">
+      <div class="logo-container">
+        <img src="../assets/img/4140436_bmw_logo_icon.ico" alt="" style="width: 60px;">
+          <h1>NORTAJ AUTO</h1>
+      </div>
+        <h2 class="logo">BMW-CARS</h2>
+    </header>
+    <div class="container cont-login">
+        
+        <div class="wrapper">
+            <span class="bg-animate1"></span>
+            <span class="bg-animate2"></span>
+            <div class="form-box login">
+                <h2 class="animation" style="--i:0; --j:21;">Login</h2>
+                <form action="#" class="form">
+                    <div class="input-box animation" style="--i:1; --j:22;">
+                        <input type="text" id="log-user-name" required autocomplete="off">
+                        <label for="log-user-name">User Name</label>
+                        <img src="../assets/icons/person/2x/outline_person_white_24dp.png" alt="">
+                    </div>
+                    <div class="input-box animation" style="--i:2; --j:23;">
+                        <input type="password" id="log-password" required autocomplete="off">
+                        <label for="log-password">Password</label>
+                        <img src="../assets/icons/lock/white-lock/2x/outline_lock_white_24dp.png" alt="">
+                    </div>
+                    <button onclick="login()" type="button" id="login-btn" class="login-btn animation" style="--i:3; --j:24;">Login</button>
+ 
+                    <div class="log-reg-link animation" style="--i:4; --j:25;">
+                        <p>Don't have an account ? <a href="#" class="link register-link">Add New</a></p>
+                        <span class="alert-wrong"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="info-text login">
+                <h2 class="animation" style="--i:0; --j:21;">Welcome Back !</h2>
+                <p class="animation" style="--i:1; --j:22;">You must Login to be able to proccess the Car Data in the showroom,
+                      If you don't have account Please creat one .</p>
+            </div>
+            <div class="form-box register">
+                <h2 class="animation" style="--i:17; --j:0">New Account</h2>
+                <form action="#" class="form">
+                    <div class="input-box animation" style="--i:18; --j:1">
+                        <input type="text"  id="reg-user-name" required autocomplete="off">
+                        <label for="reg-user-name">User Name</label>
+                        <img src="../assets/icons/person/2x/outline_person_white_24dp.png" alt="">
+                    </div>
+                    <div class="input-box animation" style="--i:19; --j:2">
+                        <input type="password" name="password" id="reg-password" required autocomplete="off">
+                        <label for="reg-password">Password</label>
+                        <img src="../assets/icons/lock/white-lock/2x/outline_lock_white_24dp.png" alt="">
+                    </div>
+                    <div class="input-box animation" style="--i:20; --j:3">
+                        <input type="password" id="admin" required autocomplete="off">
+                        <label for="admin">Admin Confirm</label>
+                        <img src="../assets/icons/sheild/light/shield-plus-regular-24.png" alt="">
+                    </div>
+                    
+                    <button onclick="addNewUser()" type="button" id="sign-up-btn" class="login-btn animation" style="--i:21; --j:4">Create account</button>
+
+                    <div class="log-reg-link animation" style="--i:22; --j:5">
+                        <p>Already have an account ? <a href="#" class="link login-link" style="--i:5;">Login</a></p>
+                        <span class="alert-sign-in"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="info-text register">
+                <h2 class="animation" style="--i:17; --j:0;">Hello there !</h2>
+                <p class="animation" style="--i:18; --j:1;">If you don't have an account , Please create one to be able to proccess
+                     the showroom car data. If you have one, Please login</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <footer class="footer-login">
+        <p>Designed By H@MiiD 2024</p>
+    </footer>
+
+    <script src="../js/login.js"></script>
+    <script src="../js/crypto-js.js"></script>
+</body>
+</html>
